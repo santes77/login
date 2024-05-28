@@ -36,10 +36,20 @@ class Ingreso : AppCompatActivity() {
         googleSignInButton = findViewById<Button>(R.id.googleSignInButton)
         googleSignInButton.setOnClickListener(View.OnClickListener { signInWithGoogle() })
 
-        // Obtener referencia al botón de acceso
-        accederButton = findViewById<Button>(R.id.loginButton)
+        accederButton = findViewById<Button>(R.id.accederButton)
         accederButton.setOnClickListener {
+            val mensajeBienvenida = "¡Bienvenido a Ayuemplen! Donde las oportunidades te están esperando."
+            Toast.makeText(this, mensajeBienvenida, Toast.LENGTH_SHORT).show()
             navigateToHome()
+            fun navigateToHome() {
+                val intent = Intent(this, HOME::class.java)
+                startActivity(intent)
+            }
+
+
+
+
+
         }
 
         // Obtener referencia al botón de registrarse
