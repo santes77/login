@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "225464656720",
+    "project_id": "mi-applicationsantes",
+    "storage_bucket": "mi-applicationsantes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225464656720:android:e3f7adb6a295752d6cc255",
+        "android_client_info": {
+          "package_name": "com.adso.myapplicationsantes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225464656720-3klbm3bjo3ej4sojhg067hfudhtl3pg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMhVpYxHT0_bSVvk4Z12hALrytn7JKY3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225464656720-3klbm3bjo3ej4sojhg067hfudhtl3pg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
