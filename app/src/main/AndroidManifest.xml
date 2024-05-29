@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplicationsantes">
 
+
         <activity
             android:name=".Ingreso"
             android:exported="true">
@@ -27,7 +28,7 @@
 
         <activity
             android:name=".PasswordRecoveryActivity"
-            android:exported="false"/>
+            android:exported="false" />
 
     </application>
 

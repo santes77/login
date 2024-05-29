@@ -13,14 +13,11 @@ import com.google.android.gms.common.api.ApiException
 
 class Ingreso : AppCompatActivity() {
 
-    private var mGoogleSignInClient: GoogleSignInClient? = null
-    private lateinit var googleSignInButton: Button
-    private lateinit var accederButton: Button
-    private lateinit var registrateButton: Button
-
     companion object {
         private const val RC_SIGN_IN = 9001
     }
+
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,42 +30,40 @@ class Ingreso : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
         // Obtener referencia al botón de inicio de sesión con Google
-        googleSignInButton = findViewById<Button>(R.id.googleSignInButton)
+        val googleSignInButton: Button = findViewById(R.id.googleSignInButton)
         googleSignInButton.setOnClickListener(View.OnClickListener { signInWithGoogle() })
 
-        accederButton = findViewById<Button>(R.id.accederButton)
+        // Obtener referencia al botón de acceder
+        val accederButton: Button = findViewById(R.id.accederButton)
         accederButton.setOnClickListener {
             val mensajeBienvenida = "¡Bienvenido a Ayuemplen! Donde las oportunidades te están esperando."
             Toast.makeText(this, mensajeBienvenida, Toast.LENGTH_SHORT).show()
             navigateToHome()
-            fun navigateToHome() {
-                val intent = Intent(this, HOME::class.java)
-                startActivity(intent)
-            }
-
-
-
-
-
         }
 
         // Obtener referencia al botón de registrarse
-        registrateButton = findViewById<Button>(R.id.registrateButton)
+        val registrateButton: Button = findViewById(R.id.registrateButton)
         registrateButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        // Obtener referencia al botón "Olvidaste tu contraseña?"
+        val OlvideContra: Button = findViewById(R.id.forgotPasswordButton)
+        OlvideContra.setOnClickListener {
+            val intent = Intent(this@Ingreso, PasswordRecoveryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    private fun navigateToMain() {
-
+    private fun navigateToHome() {
+        val intent = Intent(this, HOME::class.java)
+        startActivity(intent)
     }
 
     private fun signInWithGoogle() {
-        val signInIntent = mGoogleSignInClient?.signInIntent
-        if (signInIntent != null) {
-            startActivityForResult(signInIntent, RC_SIGN_IN)
-        }
+        val signInIntent = mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -91,10 +86,5 @@ class Ingreso : AppCompatActivity() {
 
     private fun showSuccessfulRegistrationMessage() {
         Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun navigateToHome() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
     }
 }

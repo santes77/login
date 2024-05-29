@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@color/custom_button_color</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <color name="custom_button_color">#1a689c</color>
+</resources>
