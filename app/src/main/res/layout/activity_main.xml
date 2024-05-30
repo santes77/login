@@ -44,19 +44,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Fecha de nacimiento"
-        android:onClick="showDatePicker"
         android:focusable="false" />
-    <EditText
-        android:id="@+id/editTextCedula"
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewCedula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cédula de ciudadanía / Registro de extranjería" />
+        android:hint="Cédula"
+        android:inputType="textAutoComplete" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo electrónico" />
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -66,26 +67,11 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/selectImageButton"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selecciona foto de perfil"
-        android:src="@drawable/perfil"
-        android:backgroundTint="@color/AZUL" />
-
-    <CheckBox
-        android:id="@+id/privacyPolicyCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acepto la política de privacidad" />
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/AZUL"
-        android:onClick="register"
-        android:text="Regístrate" />
+        android:text="Siguiente"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

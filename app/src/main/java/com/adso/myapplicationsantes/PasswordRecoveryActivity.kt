@@ -12,7 +12,9 @@ class PasswordRecoveryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.password_recovery)
+
         FirebaseApp.initializeApp(this)
+
 
         // Obtener referencias a los elementos de la interfaz
         val emailEditText = findViewById<EditText>(R.id.editTextEmail)

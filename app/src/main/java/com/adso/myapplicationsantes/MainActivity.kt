@@ -1,10 +1,10 @@
 package com.adso.myapplicationsantes
-
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editTextNombres: EditText
     private lateinit var editTextApellidos: EditText
     private lateinit var editTextFechaNacimiento: EditText
-    private lateinit var editTextCedula: EditText
-    private lateinit var selectImageButton: Button
-    private lateinit var privacyPolicyCheckbox: CheckBox
-    private lateinit var registerButton: Button
+    private lateinit var autoCompleteTextViewCedula: AutoCompleteTextView
+    private lateinit var editTextEmail: EditText
+    private lateinit var editTextPassword: EditText
+    private lateinit var nextButton: Button
 
     companion object {
         internal const val IMAGE_PICKER_CODE = 1
@@ -39,33 +39,32 @@ class MainActivity : AppCompatActivity() {
         editTextNombres = findViewById(R.id.editTextText)
         editTextApellidos = findViewById(R.id.editTextText2)
         editTextFechaNacimiento = findViewById(R.id.editTextText3)
-        editTextCedula = findViewById(R.id.editTextCedula)
-        selectImageButton = findViewById(R.id.selectImageButton)
-        privacyPolicyCheckbox = findViewById(R.id.privacyPolicyCheckbox)
-        registerButton = findViewById(R.id.registerButton)
+        autoCompleteTextViewCedula = findViewById(R.id.autoCompleteTextViewCedula)
+        editTextEmail = findViewById(R.id.editTextEmail)
+        editTextPassword = findViewById(R.id.editTextPassword)
+        nextButton = findViewById(R.id.nextButton)
 
-        selectImageButton.setOnClickListener {
-            // Agrega aquí la lógica para seleccionar una imagen de perfil
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, IMAGE_PICKER_CODE)
-        }
+        val cedulaOptions = arrayOf("Cédula de ciudadanía", "Cédula de extranjería", "Permiso de trabajo")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, cedulaOptions)
+        autoCompleteTextViewCedula.setAdapter(adapter)
 
-        registerButton.setOnClickListener {
+        nextButton.setOnClickListener {
             val nombres = editTextNombres.text.toString()
             val apellidos = editTextApellidos.text.toString()
             val fechaNacimiento = editTextFechaNacimiento.text.toString()
-            val cedula = editTextCedula.text.toString()
+            val cedula = autoCompleteTextViewCedula.text.toString()
+            val email = editTextEmail.text.toString()
+            val password = editTextPassword.text.toString()
 
-            if (nombres.isNotEmpty() && apellidos.isNotEmpty() && fechaNacimiento.isNotEmpty() && cedula.isNotEmpty() && privacyPolicyCheckbox.isChecked) {
+            if (nombres.isNotEmpty() && apellidos.isNotEmpty() && fechaNacimiento.isNotEmpty() && cedula.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(this, Ingreso::class.java)
+                val intent = Intent(this, OtroFormulario::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(
                     this,
-                    "Por favor, completa todos los campos y acepta la política de privacidad",
+                    "Por favor, completa todos los campos",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -77,7 +76,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDatePicker() {
-        // Agrega aquí la lógica para mostrar un selector de fecha
         val calendar = Calendar.getInstance()
 
         val datePickerDialog = DatePickerDialog(
