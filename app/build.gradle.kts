@@ -1,7 +1,10 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+<<<<<<< HEAD
     id("com.google.gms.google-services")
+=======
+>>>>>>> origin/master
 
 }
 
